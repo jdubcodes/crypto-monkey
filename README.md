@@ -1,9 +1,9 @@
-# Daily Crypto Digest
+# Crypto Monkey
 
 ### Features
-* [ ] Show top Crytocurrencies & their data
-* [ ] Show trending tweets releated to Crypto
-* [ ] Show recent top news articles related to Crypto
 
-    #### Mobile Responsive
-    * [ ] Remove Volume and Mkt Cap
+- [ ] Tending tokens carousel
+- [ ] Display Crytocurrencies & their data
+  - [ ] Table of Crytocurrencies
+  - [ ] Charts for each currency
+- [ ] Show Crypto top news articles
