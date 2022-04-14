@@ -5,12 +5,17 @@ import {
   Toolbar,
   IconButton,
   Button,
-  SvgIcon,
+  SwipeableDrawer,
+  List,
+  ListItem,
+  ListItemText,
+  ListItemIcon,
 } from '@mui/material'
 import {
   ArticleOutlined,
   CurrencyBitcoin,
   CurrencyExchange,
+  SwapHorizOutlined,
 } from '@mui/icons-material'
 import MenuIcon from '@mui/icons-material/Menu'
 
@@ -30,15 +35,28 @@ const menuItems = [
   },
   {
     text: 'Monkey Swap',
-    icon: '',
+    icon: <SwapHorizOutlined />,
     path: '/swap',
   },
 ]
 
 const Layout = () => {
+  const [drawerOpen, setDrawerOpen] = useState(false)
+
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return
+    }
+
+    setDrawerOpen(open)
+  }
+
   return (
     <Box>
-      {/* Used for mobile */}
       <AppBar position='static' elevation='1'>
         <Toolbar>
           <IconButton
@@ -52,7 +70,73 @@ const Layout = () => {
               color: '#393536',
             }}
           >
-            <MenuIcon />
+            <MenuIcon onClick={toggleDrawer(true)} />
+            {/* Mobile drawer */}
+            <SwipeableDrawer
+              anchor='left'
+              open={drawerOpen}
+              onClose={toggleDrawer(false)}
+              onOpen={toggleDrawer(true)}
+            >
+              <Box
+                sx={{ width: 220 }}
+                role='presentation'
+                onClick={toggleDrawer(false)}
+                onKeyDown={toggleDrawer(false)}
+              >
+                <List
+                  sx={{
+                    mt: 2,
+                    display: 'flex',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                  }}
+                >
+                  {/* Placeholder for wallet connect button */}
+                  <Button
+                    variant='outlined'
+                    color='secondary'
+                    size='small'
+                    sx={{
+                      mb: 6,
+                      display: { xs: 'block', sm: 'none' },
+                      color: '#393536',
+                      fontWeight: '600',
+                      '&:hover': {
+                        backgroundColor: '#F5BB96',
+                        borderColor: '#F5BB96',
+                      },
+                    }}
+                  >
+                    Connect Wallet
+                  </Button>
+                  {menuItems.map((item) => (
+                    <ListItem
+                      button
+                      sx={{
+                        '> *': {
+                          color: '#393536',
+                        },
+                        '&:hover': {
+                          backgroundColor: '#F5BB96',
+                        },
+                      }}
+                    >
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemText
+                        primary={item.text}
+                        sx={{
+                          ml: -2,
+                          '.MuiTypography-root': {
+                            fontWeight: '500',
+                          },
+                        }}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+            </SwipeableDrawer>
           </IconButton>
           <Box
             sx={{
@@ -122,6 +206,10 @@ const Layout = () => {
               marginLeft: 'auto',
               fontSize: '1rem',
               fontWeight: '600',
+              '&:hover': {
+                backgroundColor: '#F5BB96',
+                borderColor: '#F5BB96',
+              },
             }}
           >
             Connect Wallet
