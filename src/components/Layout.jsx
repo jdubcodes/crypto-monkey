@@ -57,7 +57,7 @@ const Layout = () => {
 
   return (
     <Box>
-      <AppBar position='static' elevation='1'>
+      <AppBar position='static'>
         <Toolbar>
           <IconButton
             size='xlarge'
@@ -65,79 +65,81 @@ const Layout = () => {
             aria-controls='menu-appbar'
             aria-haspopup='true'
             color='primary'
+            onClick={toggleDrawer(true)}
             sx={{
               display: { lg: 'none' },
               color: '#393536',
             }}
           >
-            <MenuIcon onClick={toggleDrawer(true)} />
-            {/* Mobile drawer */}
-            <SwipeableDrawer
-              anchor='left'
-              open={drawerOpen}
-              onClose={toggleDrawer(false)}
-              onOpen={toggleDrawer(true)}
+            <MenuIcon />
+          </IconButton>
+          {/* Mobile drawer */}
+          <SwipeableDrawer
+            anchor='left'
+            open={drawerOpen}
+            onClose={toggleDrawer(false)}
+            onOpen={toggleDrawer(true)}
+          >
+            <Box
+              sx={{ width: 220 }}
+              role='presentation'
+              onClick={toggleDrawer(false)}
+              onKeyDown={toggleDrawer(false)}
             >
-              <Box
-                sx={{ width: 220 }}
-                role='presentation'
-                onClick={toggleDrawer(false)}
-                onKeyDown={toggleDrawer(false)}
+              <List
+                sx={{
+                  mt: 2,
+                  display: 'flex',
+                  alignItems: 'center',
+                  flexDirection: 'column',
+                }}
               >
-                <List
+                {/* Placeholder for wallet connect button */}
+                <Button
+                  variant='outlined'
+                  color='secondary'
+                  size='small'
                   sx={{
-                    mt: 2,
-                    display: 'flex',
-                    alignItems: 'center',
-                    flexDirection: 'column',
+                    mb: 6,
+                    display: { xs: 'block', sm: 'none' },
+                    color: '#393536',
+                    fontWeight: '600',
+                    '&:hover': {
+                      backgroundColor: '#F5BB96',
+                      borderColor: '#F5BB96',
+                    },
                   }}
                 >
-                  {/* Placeholder for wallet connect button */}
-                  <Button
-                    variant='outlined'
-                    color='secondary'
-                    size='small'
+                  Connect Wallet
+                </Button>
+                {menuItems.map((item) => (
+                  <ListItem
+                    button
+                    key={item.text}
                     sx={{
-                      mb: 6,
-                      display: { xs: 'block', sm: 'none' },
-                      color: '#393536',
-                      fontWeight: '600',
+                      '> *': {
+                        color: '#393536',
+                      },
                       '&:hover': {
                         backgroundColor: '#F5BB96',
-                        borderColor: '#F5BB96',
                       },
                     }}
                   >
-                    Connect Wallet
-                  </Button>
-                  {menuItems.map((item) => (
-                    <ListItem
-                      button
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText
+                      primary={item.text}
                       sx={{
-                        '> *': {
-                          color: '#393536',
-                        },
-                        '&:hover': {
-                          backgroundColor: '#F5BB96',
+                        ml: -2,
+                        '.MuiTypography-root': {
+                          fontWeight: '500',
                         },
                       }}
-                    >
-                      <ListItemIcon>{item.icon}</ListItemIcon>
-                      <ListItemText
-                        primary={item.text}
-                        sx={{
-                          ml: -2,
-                          '.MuiTypography-root': {
-                            fontWeight: '500',
-                          },
-                        }}
-                      />
-                    </ListItem>
-                  ))}
-                </List>
-              </Box>
-            </SwipeableDrawer>
-          </IconButton>
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </SwipeableDrawer>
           <Box
             sx={{
               position: { xs: 'fixed', lg: 'static' },
@@ -179,6 +181,7 @@ const Layout = () => {
           >
             {menuItems.map((item) => (
               <Button
+                key={item.text}
                 sx={{
                   mx: 1,
                   display: { xs: 'none', lg: 'inline-flex' },

@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from '@mui/material'
 
 import Layout from './components/Layout'
+import Carousel from './components/Carousel'
 
 import './components/styles/App.css'
 
@@ -34,6 +35,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Layout />
+      <Carousel />
     </ThemeProvider>
   )
 }
