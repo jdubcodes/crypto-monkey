@@ -61,6 +61,9 @@ export const DrawerList = styled(List)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
+  a: {
+    width: '100%',
+  },
 }))
 
 export const DrawerWalletButton = styled(Button)(({ theme }) => ({

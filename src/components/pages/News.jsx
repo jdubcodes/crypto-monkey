@@ -1,10 +1,10 @@
 const defaultImg =
   'https://images.pexels.com/photos/11646613/pexels-photo-11646613.jpeg'
 
-const News = ({ news }) => {
+const News = () => {
   return (
     <>
-      <p>News Article</p>
+      <h1>News Article</h1>
     </>
   )
 }

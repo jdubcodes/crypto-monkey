@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 // MUI Components
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
@@ -85,10 +86,12 @@ const Layout = () => {
                 </DrawerWalletButton>
                 {/* Display all menu items */}
                 {menuItems.map((item) => (
-                  <ListItemButton button key={item.text}>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemButtonText primary={item.text} />
-                  </ListItemButton>
+                  <Link to={item.path}>
+                    <ListItemButton button key={item.text}>
+                      <ListItemIcon>{item.icon}</ListItemIcon>
+                      <ListItemButtonText primary={item.text} />
+                    </ListItemButton>
+                  </Link>
                 ))}
               </DrawerList>
             </Box>
@@ -111,7 +114,9 @@ const Layout = () => {
           >
             {/* Display desktop links */}
             {menuItems.map((item) => (
-              <DesktopButton key={item.text}>{item.text}</DesktopButton>
+              <Link to={item.path}>
+                <DesktopButton key={item.text}>{item.text}</DesktopButton>
+              </Link>
             ))}
           </Box>
           {/* Placeholder for wallet connect button */}
