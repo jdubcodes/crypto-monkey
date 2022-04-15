@@ -1,44 +1,31 @@
 import { useState } from 'react'
-import {
-  AppBar,
-  Box,
-  Toolbar,
-  IconButton,
-  Button,
-  SwipeableDrawer,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-} from '@mui/material'
-import {
-  ArticleOutlined,
-  CurrencyBitcoin,
-  CurrencyExchange,
-  SwapHorizOutlined,
-} from '@mui/icons-material'
+// MUI Components
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import IconButton from '@mui/material/IconButton'
+import SwipeableDrawer from '@mui/material/SwipeableDrawer'
+import ListItemIcon from '@mui/material/ListItemIcon'
+// MUI Icons
+import CurrencyExchange from '@mui/icons-material/CurrencyExchange'
 import MenuIcon from '@mui/icons-material/Menu'
-
+// Config files
+import menuItems from '../config/menuItems'
+// Custom styled components
+import {
+  LogoBox,
+  Logo,
+  LogoText,
+  DrawerList,
+  DrawerWalletButton,
+  ListItemButton,
+  ListItemButtonText,
+  DesktopWalletButton,
+  DesktopButton,
+} from '../components/styles/StyledComponents'
+// Images
 import logo from '../images/logo.png'
 import logoText from '../images/logoText.png'
-
-const menuItems = [
-  {
-    text: 'Cryptocurrencies',
-    icon: <CurrencyBitcoin />,
-    path: '/',
-  },
-  {
-    text: 'Crypto News',
-    icon: <ArticleOutlined />,
-    path: '/news',
-  },
-  {
-    text: 'Monkey Swap',
-    icon: <SwapHorizOutlined />,
-    path: '/swap',
-  },
-]
 
 const Layout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
@@ -57,22 +44,21 @@ const Layout = () => {
 
   return (
     <Box>
-      <AppBar position='static'>
+      <AppBar position='fixed'>
         <Toolbar>
           <IconButton
             size='xlarge'
-            aria-label='account of current user'
-            aria-controls='menu-appbar'
-            aria-haspopup='true'
-            color='primary'
             onClick={toggleDrawer(true)}
             sx={{
               display: { lg: 'none' },
-              color: '#393536',
             }}
           >
             <MenuIcon />
           </IconButton>
+          <LogoBox>
+            <Logo component='img' src={logo} alt='Crypto Monkey' />
+            <LogoText component='img' src={logoText} alt='logo text' />
+          </LogoBox>
           {/* Mobile drawer */}
           <SwipeableDrawer
             anchor='left'
@@ -81,96 +67,37 @@ const Layout = () => {
             onOpen={toggleDrawer(true)}
           >
             <Box
-              sx={{ width: 220 }}
               role='presentation'
               onClick={toggleDrawer(false)}
               onKeyDown={toggleDrawer(false)}
+              sx={{ width: 220 }}
             >
-              <List
-                sx={{
-                  mt: 2,
-                  display: 'flex',
-                  alignItems: 'center',
-                  flexDirection: 'column',
-                }}
-              >
+              <DrawerList>
                 {/* Placeholder for wallet connect button */}
-                <Button
+                <DrawerWalletButton
                   variant='outlined'
                   color='secondary'
                   size='small'
-                  sx={{
-                    mb: 6,
-                    display: { xs: 'block', sm: 'none' },
-                    color: '#393536',
-                    fontWeight: '600',
-                    '&:hover': {
-                      backgroundColor: '#F5BB96',
-                      borderColor: '#F5BB96',
-                    },
-                  }}
                 >
                   Connect Wallet
-                </Button>
+                </DrawerWalletButton>
+                {/* Display all menu items */}
                 {menuItems.map((item) => (
-                  <ListItem
-                    button
-                    key={item.text}
-                    sx={{
-                      '> *': {
-                        color: '#393536',
-                      },
-                      '&:hover': {
-                        backgroundColor: '#F5BB96',
-                      },
-                    }}
-                  >
+                  <ListItemButton button key={item.text}>
                     <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText
-                      primary={item.text}
-                      sx={{
-                        ml: -2,
-                        '.MuiTypography-root': {
-                          fontWeight: '500',
-                        },
-                      }}
-                    />
-                  </ListItem>
+                    <ListItemButtonText primary={item.text} />
+                  </ListItemButton>
                 ))}
-              </List>
+              </DrawerList>
             </Box>
           </SwipeableDrawer>
-          <Box
+          <CurrencyExchange
             sx={{
-              position: { xs: 'fixed', lg: 'static' },
-              left: { xs: '50%', lg: '0' },
-              transform: { xs: 'translateX(-50%)', lg: 'translate(0)' },
-              display: 'flex',
-              alignItems: 'center',
-              'MuiBox-root': {
-                padding: '0',
-              },
+              marginLeft: 'auto',
+              display: { sm: 'none' },
+              color: '#393536',
             }}
-          >
-            <Box
-              component='img'
-              src={logo}
-              alt='logo'
-              sx={{
-                height: { xs: '45px', sm: '50px', md: '60px' },
-                my: 1,
-                mr: 1,
-              }}
-            />
-            <Box
-              component='img'
-              src={logoText}
-              sx={{
-                height: '24px',
-                display: { xs: 'none', md: 'flex' },
-              }}
-            />
-          </Box>
+          />
           {/* Desktop links */}
           <Box
             sx={{
@@ -179,51 +106,19 @@ const Layout = () => {
               transform: 'translateX(-50%)',
             }}
           >
+            {/* Display desktop links */}
             {menuItems.map((item) => (
-              <Button
-                key={item.text}
-                sx={{
-                  mx: 1,
-                  display: { xs: 'none', lg: 'inline-flex' },
-                  color: '#421100',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  '&:hover': {
-                    backgroundColor: 'transparent',
-                    color: '#f5BB96',
-                  },
-                }}
-              >
-                {item.text}
-              </Button>
+              <DesktopButton key={item.text}>{item.text}</DesktopButton>
             ))}
           </Box>
           {/* Placeholder for wallet connect button */}
-          <Button
+          <DesktopWalletButton
             variant='outlined'
             color='secondary'
             size='large'
-            sx={{
-              display: { xs: 'none', sm: 'block' },
-              color: '#393536',
-              marginLeft: 'auto',
-              fontSize: '1rem',
-              fontWeight: '600',
-              '&:hover': {
-                backgroundColor: '#F5BB96',
-                borderColor: '#F5BB96',
-              },
-            }}
           >
             Connect Wallet
-          </Button>
-          <CurrencyExchange
-            sx={{
-              marginLeft: 'auto',
-              display: { sm: 'none' },
-              color: '#393536',
-            }}
-          />
+          </DesktopWalletButton>
         </Toolbar>
       </AppBar>
     </Box>
