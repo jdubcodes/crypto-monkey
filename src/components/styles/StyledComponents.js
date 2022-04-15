@@ -4,6 +4,8 @@ import List from '@mui/material/List'
 import Button from '@mui/material/Button'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
 
 // Colors ( pri = primary, sec = secondary)
 const priColor = '#F5BB96'
@@ -14,8 +16,8 @@ const drkColor = '#421101'
 // const secBgColor = '#FEF1EA'
 // const priTextColor = '#FEF1EA'
 // const secTextColor = '#202020'
-// const altTextColor = '#A46849'
 
+// Layout Styles
 export const LogoBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -127,3 +129,28 @@ export const DesktopButton = styled(Button)(({ theme }) => ({
     display: 'inline-flex',
   },
 }))
+
+// Marquee Styles
+export const MarqueeContainer = styled(Container)(({ theme }) => ({
+  margin: [theme.spacing(0)],
+  padding: [theme.spacing(1)],
+  display: 'flex',
+  alignItems: 'center',
+  borderRight: '1px solid #845339',
+  cursor: 'pointer',
+  '&:hover': {
+    backgroundColor: '#340E01',
+  },
+}))
+
+export const MarqueeLogo = styled(Box)({
+  height: '25px',
+  marginRight: '10px',
+  borderRadius: '50%',
+  filter: 'brightness(0.9)',
+})
+
+export const MarqueeProfit = styled(Typography)({
+  display: 'flex',
+  alignItems: 'center',
+})

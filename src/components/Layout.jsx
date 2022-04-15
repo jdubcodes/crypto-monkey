@@ -29,7 +29,7 @@ import logoText from '../images/logoText.png'
 
 const Layout = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)
-
+  // Handle drawer functionality
   const toggleDrawer = (open) => (event) => {
     if (
       event &&
@@ -44,8 +44,9 @@ const Layout = () => {
 
   return (
     <Box>
-      <AppBar position='fixed'>
+      <AppBar position='static'>
         <Toolbar>
+          {/* Mobile menu icon */}
           <IconButton
             size='xlarge'
             onClick={toggleDrawer(true)}
@@ -55,6 +56,7 @@ const Layout = () => {
           >
             <MenuIcon />
           </IconButton>
+          {/* Logo display for all screens */}
           <LogoBox>
             <Logo component='img' src={logo} alt='Crypto Monkey' />
             <LogoText component='img' src={logoText} alt='logo text' />
@@ -91,6 +93,7 @@ const Layout = () => {
               </DrawerList>
             </Box>
           </SwipeableDrawer>
+          {/* Button for wallet connect on small screens */}
           <CurrencyExchange
             sx={{
               marginLeft: 'auto',

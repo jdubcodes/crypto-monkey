@@ -9,7 +9,6 @@ const priBgColor = '#202020'
 const secBgColor = '#FEF1EA'
 const priTextColor = '#FEF1EA'
 const secTextColor = '#202020'
-// const altTextColor = '#A46849'
 
 const customTheme = createTheme({
   palette: {
