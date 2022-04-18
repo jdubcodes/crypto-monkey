@@ -5,7 +5,10 @@
 }
 
 html {
-  background-color: #222;
+  background: linear-gradient(
+    rgb(254, 241, 234) 0%,
+    rgba(248, 250, 253, 0) 413px
+  );
 }
 
 a {

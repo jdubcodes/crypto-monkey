@@ -86,8 +86,8 @@ const Layout = () => {
                 </DrawerWalletButton>
                 {/* Display all menu items */}
                 {menuItems.map((item) => (
-                  <Link to={item.path}>
-                    <ListItemButton button key={item.text}>
+                  <Link to={item.path} key={item.text}>
+                    <ListItemButton button>
                       <ListItemIcon>{item.icon}</ListItemIcon>
                       <ListItemButtonText primary={item.text} />
                     </ListItemButton>
@@ -114,8 +114,8 @@ const Layout = () => {
           >
             {/* Display desktop links */}
             {menuItems.map((item) => (
-              <Link to={item.path}>
-                <DesktopButton key={item.text}>{item.text}</DesktopButton>
+              <Link to={item.path} key={item.text}>
+                <DesktopButton>{item.text}</DesktopButton>
               </Link>
             ))}
           </Box>

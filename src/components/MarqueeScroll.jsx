@@ -9,7 +9,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 import {
   MarqueeContainer,
   MarqueeLogo,
-  MarqueeProfit,
+  ProfitText,
 } from '../components/styles/StyledComponents'
 
 import marqueeBg from '../images/marqueeBg.svg'
@@ -60,7 +60,7 @@ const MarqueeScroll = () => {
             <Typography variant='body' sx={{ mr: 1 }}>
               ${coin.current_price.toFixed(2)}
             </Typography>
-            <MarqueeProfit
+            <ProfitText
               variant='body'
               sx={{ color: increase ? '#81c784' : '#e57373' }}
             >
@@ -71,7 +71,7 @@ const MarqueeScroll = () => {
                   : coin.price_change_percentage_24h.toFixed(2).slice(1)}
                 %
               </Box>
-            </MarqueeProfit>
+            </ProfitText>
           </MarqueeContainer>
         )
       })}

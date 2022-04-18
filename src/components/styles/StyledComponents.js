@@ -17,7 +17,7 @@ const drkColor = '#421101'
 // const priTextColor = '#FEF1EA'
 // const secTextColor = '#202020'
 
-// Layout Styles
+// Layout styles
 export const LogoBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -133,7 +133,7 @@ export const DesktopButton = styled(Button)(({ theme }) => ({
   },
 }))
 
-// Marquee Styles
+// Marquee styles
 export const MarqueeContainer = styled(Container)(({ theme }) => ({
   margin: [theme.spacing(0)],
   padding: [theme.spacing(1)],
@@ -153,7 +153,25 @@ export const MarqueeLogo = styled(Box)({
   filter: 'brightness(0.9)',
 })
 
-export const MarqueeProfit = styled(Typography)({
+// Table styles
+export const CoinNameBox = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '5px',
+  '.MuiTypography-body1': {
+    fontSize: 14,
+    lineHeight: 1,
+  },
+})
+
+export const CoinLogo = styled(Box)({
+  height: 24,
+  marginRight: 8,
+  borderRadius: '50%',
+})
+
+// Global components
+export const ProfitText = styled(Typography)({
   display: 'flex',
   alignItems: 'center',
 })
