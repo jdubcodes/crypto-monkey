@@ -24,7 +24,7 @@ const MarqueeScroll = () => {
     const { data } = await axios(`${process.env.REACT_APP_TRENDING_COINS_URL}`)
     // Get trending coin id's to fetch more data
     const trendingCoinIds = data.coins.map((coin) => coin.item.id)
-    // Fetch data needed for marquee
+    // Fetch trending coin data needed for marquee
     const trendingCoinsData = await axios(
       trendingCoinDataUrl(trendingCoinIds.toString())
     )

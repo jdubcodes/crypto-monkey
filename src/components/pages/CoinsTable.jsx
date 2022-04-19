@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+// Created componenets
+import TableChart from '../TableChart'
 // MUI Compoenents
 import Container from '@mui/material/Container'
 import TableContainer from '@mui/material/TableContainer'
@@ -55,7 +57,7 @@ const CoinsTable = () => {
               <TableCell
                 align='center'
                 sx={{ width: '16px', padding: '6px 8px' }}
-              ></TableCell>
+              />
               <TableCell align='center'>#</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Price</TableCell>
@@ -128,7 +130,9 @@ const CoinsTable = () => {
                     <TableCell>
                       ${numberWithCommas(coin.total_volume.toString())}
                     </TableCell>
-                    <TableCell>Coin Graph</TableCell>
+                    <TableCell>
+                      <TableChart id={coin.id} />
+                    </TableCell>
                   </TableRow>
                 )
               })}
