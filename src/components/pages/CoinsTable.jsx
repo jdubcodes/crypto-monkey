@@ -49,7 +49,7 @@ const CoinsTable = () => {
   }
 
   return (
-    <Container sx={{ pt: 2 }}>
+    <Container sx={{ pt: 1 }}>
       <TableContainer>
         <Table>
           <TableHead>
@@ -61,10 +61,10 @@ const CoinsTable = () => {
               <TableCell align='center'>#</TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Price</TableCell>
-              <TableCell>24h %</TableCell>
-              <TableCell>Market Cap</TableCell>
-              <TableCell>Volume</TableCell>
-              <TableCell>Last 7 Days</TableCell>
+              <TableCell align='center'>24h %</TableCell>
+              <TableCell align='center'>Market Cap</TableCell>
+              <TableCell align='center'>Volume</TableCell>
+              <TableCell align='center'>Last 7 Days</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -74,7 +74,14 @@ const CoinsTable = () => {
                 let increase = coin.price_change_percentage_24h > 0
 
                 return (
-                  <TableRow key={coin.symbol}>
+                  <TableRow
+                    key={coin.symbol}
+                    sx={{
+                      'MuiTableCell-root': {
+                        paddingY: 0,
+                      },
+                    }}
+                  >
                     <TableCell
                       align='right'
                       sx={{ paddingX: 0, lineHeight: 0 }}
@@ -130,7 +137,7 @@ const CoinsTable = () => {
                     <TableCell>
                       ${numberWithCommas(coin.total_volume.toString())}
                     </TableCell>
-                    <TableCell>
+                    <TableCell sx={{ paddingY: 0 }}>
                       <TableChart id={coin.id} />
                     </TableCell>
                   </TableRow>

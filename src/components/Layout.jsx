@@ -58,10 +58,14 @@ const Layout = () => {
             <MenuIcon />
           </IconButton>
           {/* Logo display for all screens */}
+
           <LogoBox>
-            <Logo component='img' src={logo} alt='Crypto Monkey' />
-            <LogoText component='img' src={logoText} alt='logo text' />
+            <Link to='/' style={{ display: 'flex', alignItems: 'center' }}>
+              <Logo component='img' src={logo} alt='Crypto Monkey' />
+              <LogoText component='img' src={logoText} alt='logo text' />
+            </Link>
           </LogoBox>
+
           {/* Mobile drawer */}
           <SwipeableDrawer
             anchor='left'

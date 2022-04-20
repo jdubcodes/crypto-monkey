@@ -9,6 +9,7 @@ import MarqueeScroll from './components/MarqueeScroll'
 import CoinsTable from './components/pages/CoinsTable'
 import News from './components/pages/News'
 import MonkeySwap from './components/pages/MonkeySwap'
+import TableChart from './components/TableChart'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<CoinsTable />} />
         <Route path='/news' element={<News />} />
         <Route path='/swap' element={<MonkeySwap />} />
+        <Route path='/chart' element={<TableChart />} />
       </Routes>
     </ThemeProvider>
   )

@@ -19,8 +19,6 @@ const drkColor = '#421101'
 
 // Layout styles
 export const LogoBox = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
   [theme.breakpoints.up('xs')]: {
     position: 'fixed',
     left: '50%',
