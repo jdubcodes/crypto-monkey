@@ -4,7 +4,7 @@ import { createTheme } from '@mui/material/styles'
 const priColor = '#F5BB96'
 const secColor = '#A46849'
 const altColor = '#393536'
-// const drkColor = '#421101'
+const drkColor = '#421101'
 const priBgColor = '#202020'
 const secBgColor = '#FEF1EA'
 const priTextColor = '#FEF1EA'
@@ -64,6 +64,32 @@ const customTheme = createTheme({
         },
         body: {
           padding: '24px 10px',
+        },
+      },
+    },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          color: drkColor,
+        },
+      },
+    },
+    MuiPagination: {
+      styleOverrides: {
+        root: {
+          padding: '6px 0',
+          display: 'flex',
+          justifyContent: 'center',
+        },
+      },
+    },
+    MuiPaginationItem: {
+      styleOverrides: {
+        root: {
+          color: drkColor,
+          '&:hover': {
+            backgroundColor: secBgColor,
+          },
         },
       },
     },

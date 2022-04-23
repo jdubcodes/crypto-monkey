@@ -18,23 +18,22 @@ const TableChart = ({ id }) => {
   const [sevenDayHistory, setSevenDayHistory] = useState([])
   const [profit, setProfit] = useState()
 
-  const fetchPriceData = async () => {
-    const historicalDataUrl = (id) =>
-      `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7`
-
-    const { data } = await axios(historicalDataUrl(id))
-
-    setSevenDayHistory(data.prices)
-    // Handle graph color
-    const firstPrice = data.prices[0][1]
-    const lastPrice = data.prices[data.prices.length - 1][1]
-    const checkProfit = () =>
-      lastPrice > firstPrice ? setProfit(true) : setProfit(false)
-
-    checkProfit()
-  }
-
   useEffect(() => {
+    const fetchPriceData = async () => {
+      const historicalDataUrl = (id) =>
+        `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=7`
+
+      const { data } = await axios(historicalDataUrl(id))
+
+      setSevenDayHistory(data.prices)
+      // Handle graph color
+      const firstPrice = data.prices[0][1]
+      const lastPrice = data.prices[data.prices.length - 1][1]
+      const checkProfit = () =>
+        lastPrice > firstPrice ? setProfit(true) : setProfit(false)
+
+      checkProfit()
+    }
     fetchPriceData()
   }, [])
 

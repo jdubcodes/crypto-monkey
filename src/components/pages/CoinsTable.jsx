@@ -10,8 +10,8 @@ import TableHead from '@mui/material/TableHead'
 import TableBody from '@mui/material/TableBody'
 import TableRow from '@mui/material/TableRow'
 import TableCell from '@mui/material/TableCell'
-import TablePagination from '@mui/material/TablePagination'
 import Typography from '@mui/material/Typography'
+import Pagination from '@mui/material/Pagination'
 // MUI Icons
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
@@ -22,7 +22,6 @@ import { CoinLogo, CoinNameBox, ProfitText } from '../styles/StyledComponents'
 const CoinsTable = () => {
   const [coins, setCoins] = useState([])
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(10)
 
   const fetchCoins = async () => {
     const { data } = await axios(`${process.env.REACT_APP_ALL_COINS_URL}`)
@@ -35,13 +34,8 @@ const CoinsTable = () => {
     fetchCoins()
   }, [])
 
-  const handleChangePage = (newPage) => {
-    setPage(newPage)
-  }
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value)
-    setPage(0)
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage - 1)
   }
 
   const numberWithCommas = (x) => {
@@ -68,92 +62,97 @@ const CoinsTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {coins
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map((coin) => {
-                let increase = coin.price_change_percentage_24h > 0
+            {coins.slice(page * 10, page * 10 + 10).map((coin) => {
+              let increase = coin.price_change_percentage_24h > 0
 
-                return (
-                  <TableRow
-                    key={coin.symbol}
-                    sx={{
-                      'MuiTableCell-root': {
-                        paddingY: 0,
-                      },
-                    }}
-                  >
-                    <TableCell
-                      align='right'
-                      sx={{ paddingX: 0, lineHeight: 0 }}
+              return (
+                <TableRow
+                  key={coin.symbol}
+                  sx={{
+                    'MuiTableCell-root': {
+                      paddingY: 0,
+                    },
+                  }}
+                >
+                  <TableCell align='right' sx={{ paddingX: 0, lineHeight: 0 }}>
+                    <FavoriteBorderOutlinedIcon
+                      sx={{
+                        fontSize: 16,
+                        '&:hover': {
+                          color: '#F5BB96',
+                          cursor: 'pointer',
+                        },
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell align='center'>{coin.market_cap_rank}</TableCell>
+                  <TableCell>
+                    <CoinNameBox>
+                      <CoinLogo
+                        component='img'
+                        src={coin.image}
+                        alt={coin.symbol}
+                      />
+                      <Typography sx={{ fontWeight: 600 }}>
+                        {coin.name}
+                      </Typography>
+                      <Typography sx={{ color: '#ADADAD', fontWeight: 500 }}>
+                        {coin.symbol.toUpperCase()}
+                      </Typography>
+                    </CoinNameBox>
+                  </TableCell>
+                  <TableCell>
+                    $
+                    {numberWithCommas(
+                      coin.current_price > 0.99
+                        ? coin.current_price.toFixed(2)
+                        : coin.current_price.toFixed(3)
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    <ProfitText
+                      sx={{
+                        fontSize: '14px',
+                        fontWeight: 600,
+                        color: increase
+                          ? 'rgb(22, 199, 132)'
+                          : 'rgb(234, 57, 67)',
+                      }}
                     >
-                      <FavoriteBorderOutlinedIcon sx={{ fontSize: 16 }} />
-                    </TableCell>
-                    <TableCell align='center'>{coin.market_cap_rank}</TableCell>
-                    <TableCell>
-                      <CoinNameBox>
-                        <CoinLogo
-                          component='img'
-                          src={coin.image}
-                          alt={coin.symbol}
-                        />
-                        <Typography sx={{ fontWeight: 600 }}>
-                          {coin.name}
-                        </Typography>
-                        <Typography sx={{ color: '#ADADAD', fontWeight: 500 }}>
-                          {coin.symbol.toUpperCase()}
-                        </Typography>
-                      </CoinNameBox>
-                    </TableCell>
-                    <TableCell>
-                      $
-                      {numberWithCommas(
-                        coin.current_price > 0.99
-                          ? coin.current_price.toFixed(2)
-                          : coin.current_price.toFixed(3)
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      <ProfitText
-                        sx={{
-                          fontSize: '14px',
-                          fontWeight: 600,
-                          color: increase
-                            ? 'rgb(22, 199, 132)'
-                            : 'rgb(234, 57, 67)',
-                        }}
-                      >
-                        {increase ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-                        {increase
-                          ? coin.price_change_percentage_24h.toFixed(2)
-                          : coin.price_change_percentage_24h
-                              .toFixed(2)
-                              .slice(1)}
-                        %
-                      </ProfitText>
-                    </TableCell>
-                    <TableCell>
-                      ${numberWithCommas(coin.market_cap.toString())}
-                    </TableCell>
-                    <TableCell>
-                      ${numberWithCommas(coin.total_volume.toString())}
-                    </TableCell>
-                    <TableCell sx={{ paddingY: 0 }}>
-                      <TableChart id={coin.id} />
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
+                      {increase ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                      {increase
+                        ? coin.price_change_percentage_24h.toFixed(2)
+                        : coin.price_change_percentage_24h.toFixed(2).slice(1)}
+                      %
+                    </ProfitText>
+                  </TableCell>
+                  <TableCell>
+                    ${numberWithCommas(coin.market_cap.toString())}
+                  </TableCell>
+                  <TableCell>
+                    ${numberWithCommas(coin.total_volume.toString())}
+                  </TableCell>
+                  <TableCell sx={{ paddingY: 0 }}>
+                    <TableChart id={coin.id} />
+                  </TableCell>
+                </TableRow>
+              )
+            })}
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[10, 25, 100]}
-        component='div'
-        count={coins.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
+      <Pagination
+        sx={{
+          '.Mui-selected': {
+            '&:hover': {
+              backgroundColor: '#fef1ea',
+            },
+            backgroundColor: '#fef1ea',
+          },
+        }}
+        count='25'
+        onChange={handleChangePage}
+        color='primary'
       />
     </Container>
   )
