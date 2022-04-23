@@ -36,6 +36,7 @@ const CoinsTable = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage - 1)
+    window.scroll(0, 100)
   }
 
   const numberWithCommas = (x) => {
@@ -52,13 +53,33 @@ const CoinsTable = () => {
                 align='center'
                 sx={{ width: '16px', padding: '6px 8px' }}
               />
-              <TableCell align='center'>#</TableCell>
+              <TableCell
+                align='center'
+                sx={{ display: { xs: 'none', sm: 'table-cell' } }}
+              >
+                #
+              </TableCell>
               <TableCell>Name</TableCell>
               <TableCell>Price</TableCell>
               <TableCell align='center'>24h %</TableCell>
-              <TableCell align='center'>Market Cap</TableCell>
-              <TableCell align='center'>Volume</TableCell>
-              <TableCell align='center'>Last 7 Days</TableCell>
+              <TableCell
+                align='center'
+                sx={{ display: { xs: 'none', md: 'table-cell' } }}
+              >
+                Market Cap
+              </TableCell>
+              <TableCell
+                align='center'
+                sx={{ display: { xs: 'none', md: 'table-cell' } }}
+              >
+                Volume
+              </TableCell>
+              <TableCell
+                align='center'
+                sx={{ display: { xs: 'none', sm: 'table-cell' } }}
+              >
+                Last 7 Days
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -85,7 +106,12 @@ const CoinsTable = () => {
                       }}
                     />
                   </TableCell>
-                  <TableCell align='center'>{coin.market_cap_rank}</TableCell>
+                  <TableCell
+                    align='center'
+                    sx={{ display: { xs: 'none', sm: 'table-cell' } }}
+                  >
+                    {coin.market_cap_rank}
+                  </TableCell>
                   <TableCell>
                     <CoinNameBox>
                       <CoinLogo
@@ -96,7 +122,13 @@ const CoinsTable = () => {
                       <Typography sx={{ fontWeight: 600 }}>
                         {coin.name}
                       </Typography>
-                      <Typography sx={{ color: '#ADADAD', fontWeight: 500 }}>
+                      <Typography
+                        sx={{
+                          color: '#ADADAD',
+                          fontWeight: 500,
+                          // display: { xs: 'none' },
+                        }}
+                      >
                         {coin.symbol.toUpperCase()}
                       </Typography>
                     </CoinNameBox>
@@ -126,13 +158,19 @@ const CoinsTable = () => {
                       %
                     </ProfitText>
                   </TableCell>
-                  <TableCell>
+                  <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
                     ${numberWithCommas(coin.market_cap.toString())}
                   </TableCell>
-                  <TableCell>
+                  <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>
                     ${numberWithCommas(coin.total_volume.toString())}
                   </TableCell>
-                  <TableCell sx={{ paddingY: 0 }}>
+                  <TableCell
+                    align='center'
+                    sx={{
+                      paddingY: 0,
+                      display: { xs: 'none', sm: 'table-cell' },
+                    }}
+                  >
                     <TableChart id={coin.id} />
                   </TableCell>
                 </TableRow>
@@ -150,7 +188,7 @@ const CoinsTable = () => {
             backgroundColor: '#fef1ea',
           },
         }}
-        count='25'
+        count={25}
         onChange={handleChangePage}
         color='primary'
       />
