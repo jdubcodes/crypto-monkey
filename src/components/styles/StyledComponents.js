@@ -137,6 +137,7 @@ export const MarqueeContainer = styled(Container)(({ theme }) => ({
   padding: [theme.spacing(1)],
   display: 'flex',
   alignItems: 'center',
+  justifyContent: 'center',
   borderRight: '1px solid #845339',
   cursor: 'pointer',
   '&:hover': {
