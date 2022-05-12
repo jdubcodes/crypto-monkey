@@ -6,6 +6,10 @@ import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card'
+import CardActionArea from '@mui/material/CardActionArea'
+import CardMedia from '@mui/material/CardMedia'
+import CardContent from '@mui/material/CardContent'
 
 // Colors ( pri = primary, sec = secondary)
 const priColor = '#F5BB96'
@@ -16,6 +20,12 @@ const drkColor = '#421101'
 // const secBgColor = '#FEF1EA'
 // const priTextColor = '#FEF1EA'
 // const secTextColor = '#202020'
+
+// Global components
+export const ProfitText = styled(Typography)({
+  display: 'flex',
+  alignItems: 'center',
+})
 
 // Layout styles
 export const LogoBox = styled(Box)(({ theme }) => ({
@@ -169,8 +179,32 @@ export const CoinLogo = styled(Box)({
   borderRadius: '50%',
 })
 
-// Global components
-export const ProfitText = styled(Typography)({
+// Article full image styles
+export const ArticleContainer = styled(Box)({
   display: 'flex',
   alignItems: 'center',
+  '& > *': {
+    flex: 1,
+  },
+})
+
+export const FiCard = styled(Card)({
+  position: 'relative',
+})
+
+export const FiCardActionArea = styled(CardActionArea)({
+  position: 'relative',
+})
+
+export const FiCardMedia = styled(CardMedia)({
+  position: 'absolute',
+  top: 0,
+  right: 0,
+  height: '100%',
+  width: '100%',
+})
+
+export const FiCardContent = styled(CardContent)({
+  position: 'relative',
+  backgroundCOlor: 'transparent',
 })

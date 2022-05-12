@@ -6,7 +6,7 @@ const menuItems = [
   {
     text: 'Cryptocurrencies',
     icon: <CurrencyBitcoin />,
-    path: '/',
+    path: '/cryptos',
   },
   {
     text: 'Crypto News',

@@ -26,7 +26,7 @@ const CoinsTable = () => {
   const fetchCoins = async () => {
     const { data } = await axios(`${process.env.REACT_APP_ALL_COINS_URL}`)
 
-    console.log(data)
+    // console.log(data)
     setCoins(data)
   }
 
@@ -183,9 +183,9 @@ const CoinsTable = () => {
         sx={{
           '.Mui-selected': {
             '&:hover': {
-              backgroundColor: '#fef1ea',
+              backgroundColor: '#fef1ea!important',
             },
-            backgroundColor: '#fef1ea',
+            backgroundColor: '#fef1ea!important',
           },
         }}
         count={25}

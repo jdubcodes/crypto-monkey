@@ -6,10 +6,10 @@ import customTheme from './components/styles/customTheme'
 // Components
 import Layout from './components/Layout'
 import MarqueeScroll from './components/MarqueeScroll'
-import CoinsTable from './components/pages/CoinsTable'
-import News from './components/pages/News'
+import Homepage from './components/pages/Homepage'
+import CryptoNews from './components/pages/CryptoNews'
 import MonkeySwap from './components/pages/MonkeySwap'
-import TableChart from './components/TableChart'
+import CoinsTable from './components/pages/CoinsTable'
 
 function App() {
   return (
@@ -17,10 +17,10 @@ function App() {
       <Layout />
       <MarqueeScroll />
       <Routes>
-        <Route path='/' element={<CoinsTable />} />
-        <Route path='/news' element={<News />} />
+        <Route path='/' element={<Homepage />} />
+        <Route path='/cryptos' element={<CoinsTable />} />
+        <Route path='/news' element={<CryptoNews />} />
         <Route path='/swap' element={<MonkeySwap />} />
-        <Route path='/chart' element={<TableChart />} />
       </Routes>
     </ThemeProvider>
   )
