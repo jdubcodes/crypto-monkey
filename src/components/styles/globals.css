@@ -10,8 +10,41 @@ html {
     rgba(248, 250, 253, 0) 413px
   );
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #f5bb96 transparent;
+  overflow: auto;
 }
 
 a {
   text-decoration: none;
+}
+/* scrollbar styles */
+::-webkit-scrollbar {
+  background: transparent;
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #f5bb96;
+  border-radius: 4px;
+}
+/* swiper style overrides */
+.swiper-container {
+  width: 480px;
+}
+
+@media screen and (min-width: 640px) {
+  .swiper-container {
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .swiper-container {
+    width: 768px;
+  }
 }

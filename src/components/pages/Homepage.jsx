@@ -1,10 +1,10 @@
 import CoinsTable from './CoinsTable'
-import HomeNewsArticles from '../HomeNewsArticles'
+import NewsArticles from '../NewsArticles'
 
 const Homepage = () => {
   return (
     <>
-      <HomeNewsArticles />
+      <NewsArticles />
       <CoinsTable />
     </>
   )

@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material/styles'
 // Colors ( pri = primary, sec = secondary)
 const priColor = '#F5BB96'
 const secColor = '#A46849'
-const altColor = '#393536'
+// const altColor = '#393536'
 const drkColor = '#421101'
 const priBgColor = '#202020'
 const secBgColor = '#FEF1EA'
@@ -55,11 +55,11 @@ const customTheme = createTheme({
         root: {
           color: secTextColor,
           fontWeight: 600,
-          borderColor: altColor,
+          borderColor: '#dfd7d7',
         },
         head: {
           padding: '6px 10px',
-          borderTop: '1px solid #393536',
+          borderTop: '1px solid #dfd7d7',
           fontSize: 12,
         },
         body: {

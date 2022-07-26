@@ -27,17 +27,16 @@ export const ProfitText = styled(Typography)({
   alignItems: 'center',
 })
 
-// Layout styles
+// Navbar styles
 export const LogoBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('xs')]: {
+    left: '0%',
+    transform: 'translateX(0)',
+  },
+  [theme.breakpoints.up('md')]: {
     position: 'absolute',
     left: '50%',
     transform: 'translateX(-50%)',
-  },
-  [theme.breakpoints.up('lg')]: {
-    position: 'static',
-    left: 0,
-    transform: 'translate(0)',
   },
 }))
 
@@ -57,9 +56,9 @@ export const Logo = styled(Box)(({ theme }) => ({
 export const LogoText = styled(Box)(({ theme }) => ({
   height: 24,
   [theme.breakpoints.up('xs')]: {
-    display: 'none',
+    display: 'block',
   },
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up('sm')]: {
     display: 'block',
   },
 }))
@@ -162,6 +161,23 @@ export const MarqueeLogo = styled(Box)({
   filter: 'brightness(0.9)',
 })
 
+// Heading styles
+export const SectionHeading = styled(Typography)(({ theme }) => ({
+  [theme.breakpoints.up('xs')]: {
+    fontSize: 18,
+  },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: 20,
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: 22,
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: 24,
+  },
+  color: '#421101',
+}))
+
 // Table styles
 export const CoinNameBox = styled(Box)({
   display: 'flex',
@@ -179,32 +195,51 @@ export const CoinLogo = styled(Box)({
   borderRadius: '50%',
 })
 
-// Article full image styles
-export const ArticleContainer = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
-  '& > *': {
-    flex: 1,
-  },
+// News articles styles
+export const ArticlesContainer = styled(Container)({
+  margin: 'auto',
+  height: 198,
 })
 
+// News card styles
 export const FiCard = styled(Card)({
-  position: 'relative',
+  width: '100%',
+  boxShadow: 'none',
+  backgroundColor: 'transparent',
 })
 
 export const FiCardActionArea = styled(CardActionArea)({
-  position: 'relative',
+  border: 'none',
+  borderRadius: '8px',
+  overflow: 'hidden',
 })
 
 export const FiCardMedia = styled(CardMedia)({
+  height: 160,
+  objectFit: 'cover',
+})
+
+export const NewsHeadlineBox = styled(Box)({
+  width: '100%',
+  height: '43%',
   position: 'absolute',
-  top: 0,
-  right: 0,
+  bottom: '0',
+  backgroundColor: 'rgba(34, 34, 34, 88%)',
+  overflow: 'hidden',
+})
+
+export const FiCardContent = styled(CardContent)({
+  paddingTop: 3,
+  paddingLeft: 3,
+  paddingBottom: 0,
   height: '100%',
   width: '100%',
 })
 
-export const FiCardContent = styled(CardContent)({
-  position: 'relative',
-  backgroundCOlor: 'transparent',
+export const ArticleTitle = styled(Typography)({
+  paddingLeft: '5px',
+  color: priColor,
+  fontSize: '15px',
+  fontWeight: '300',
+  lineHeight: '1.4',
 })

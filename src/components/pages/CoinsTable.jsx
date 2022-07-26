@@ -17,7 +17,12 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 // Custom styled components
-import { CoinLogo, CoinNameBox, ProfitText } from '../styles/StyledComponents'
+import {
+  CoinLogo,
+  CoinNameBox,
+  ProfitText,
+  SectionHeading,
+} from '../styles/StyledComponents'
 
 const CoinsTable = () => {
   const [coins, setCoins] = useState([])
@@ -44,7 +49,14 @@ const CoinsTable = () => {
   }
 
   return (
-    <Container sx={{ pt: 1 }}>
+    <Container>
+      <SectionHeading
+        variant='h5'
+        component='h2'
+        sx={{ marginBottom: '5px', paddingTop: '15px' }}
+      >
+        Today's Cryptocurrency Prices by Market Cap
+      </SectionHeading>
       <TableContainer>
         <Table>
           <TableHead>
@@ -93,6 +105,9 @@ const CoinsTable = () => {
                     'MuiTableCell-root': {
                       paddingY: 0,
                     },
+                    '&:hover': {
+                      backgroundColor: '#fffdfc',
+                    },
                   }}
                 >
                   <TableCell align='right' sx={{ paddingX: 0, lineHeight: 0 }}>
@@ -126,7 +141,6 @@ const CoinsTable = () => {
                         sx={{
                           color: '#ADADAD',
                           fontWeight: 500,
-                          // display: { xs: 'none' },
                         }}
                       >
                         {coin.symbol.toUpperCase()}
