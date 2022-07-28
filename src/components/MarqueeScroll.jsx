@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+// Marquee package
 import Marquee from 'react-fast-marquee'
-import { Box, Typography } from '@mui/material'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 // MUI Icons
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
@@ -28,6 +31,7 @@ const MarqueeScroll = () => {
     const trendingCoinsData = await axios(trendingCoinDataUrl(trendingCoinIds))
 
     setTrendingCoins(trendingCoinsData.data)
+    console.log(trendingCoinsData.data)
   }
 
   useEffect(() => {
@@ -50,27 +54,29 @@ const MarqueeScroll = () => {
         let increase = coin.price_change_percentage_24h > 0
 
         return (
-          <MarqueeContainer key={coin.symbol}>
-            <MarqueeLogo component='img' src={coin.image} alt={coin.symbol} />
-            <Typography noWrap variant='body' sx={{ mr: 1 }}>
-              {coin.name}
-            </Typography>
-            <Typography variant='body' sx={{ mr: 1 }}>
-              ${coin.current_price.toFixed(2)}
-            </Typography>
-            <ProfitText
-              variant='body'
-              sx={{ color: increase ? '#81c784' : '#e57373' }}
-            >
-              {increase ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-              <Box sx={{ marginLeft: '-3px' }}>
-                {increase
-                  ? coin.price_change_percentage_24h.toFixed(2)
-                  : coin.price_change_percentage_24h.toFixed(2).slice(1)}
-                %
-              </Box>
-            </ProfitText>
-          </MarqueeContainer>
+          <Link to={coin.id}>
+            <MarqueeContainer key={coin.symbol}>
+              <MarqueeLogo component='img' src={coin.image} alt={coin.symbol} />
+              <Typography noWrap variant='body' sx={{ mr: 1 }}>
+                {coin.name}
+              </Typography>
+              <Typography variant='body' sx={{ mr: 1 }}>
+                ${coin.current_price.toFixed(2)}
+              </Typography>
+              <ProfitText
+                variant='body'
+                sx={{ color: increase ? '#81c784' : '#e57373' }}
+              >
+                {increase ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                <Box sx={{ marginLeft: '-3px' }}>
+                  {increase
+                    ? coin.price_change_percentage_24h.toFixed(2)
+                    : coin.price_change_percentage_24h.toFixed(2).slice(1)}
+                  %
+                </Box>
+              </ProfitText>
+            </MarqueeContainer>
+          </Link>
         )
       })}
     </Marquee>

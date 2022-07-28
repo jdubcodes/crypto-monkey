@@ -1,3 +1,4 @@
+import { Route, Routes } from 'react-router-dom'
 // Smooth Scroll
 import { Scrollbar } from 'smooth-scrollbar-react'
 // Custom styling imports
@@ -7,6 +8,7 @@ import customTheme from './components/styles/customTheme'
 import Navbar from './components/Navbar'
 import MarqueeScroll from './components/MarqueeScroll'
 import Homepage from './components/pages/Homepage'
+import CoinInfo from './components/pages/CoinInfo'
 
 function App() {
   return (
@@ -14,7 +16,10 @@ function App() {
       <Scrollbar damping={0.9}>
         <Navbar />
         <MarqueeScroll />
-        <Homepage />
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/:id' element={<CoinInfo />} />
+        </Routes>
       </Scrollbar>
     </ThemeProvider>
   )

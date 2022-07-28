@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 // Created componenets
 import TableChart from './TableChart'
@@ -40,7 +41,6 @@ const CoinsTable = () => {
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage - 1)
-    window.scroll(0, 100)
   }
 
   const numberWithCommas = (x) => {
@@ -58,6 +58,7 @@ const CoinsTable = () => {
       </SectionHeading>
       <TableContainer>
         <Table>
+          {/* Table heading */}
           <TableHead>
             <TableRow>
               <TableCell
@@ -93,6 +94,7 @@ const CoinsTable = () => {
               </TableCell>
             </TableRow>
           </TableHead>
+          {/* Table rows for each cryptocurrency */}
           <TableBody>
             {coins.slice(page * 10, page * 10 + 10).map((coin) => {
               let increase = coin.price_change_percentage_24h > 0
@@ -127,24 +129,26 @@ const CoinsTable = () => {
                     {coin.market_cap_rank}
                   </TableCell>
                   <TableCell>
-                    <CoinNameBox>
-                      <CoinLogo
-                        component='img'
-                        src={coin.image}
-                        alt={coin.symbol}
-                      />
-                      <Typography sx={{ fontWeight: 600 }}>
-                        {coin.name}
-                      </Typography>
-                      <Typography
-                        sx={{
-                          color: '#ADADAD',
-                          fontWeight: 500,
-                        }}
-                      >
-                        {coin.symbol.toUpperCase()}
-                      </Typography>
-                    </CoinNameBox>
+                    <Link to={coin.id}>
+                      <CoinNameBox>
+                        <CoinLogo
+                          component='img'
+                          src={coin.image}
+                          alt={coin.symbol}
+                        />
+                        <Typography sx={{ fontWeight: 600 }}>
+                          {coin.name}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            color: '#ADADAD',
+                            fontWeight: 500,
+                          }}
+                        >
+                          {coin.symbol.toUpperCase()}
+                        </Typography>
+                      </CoinNameBox>
+                    </Link>
                   </TableCell>
                   <TableCell>
                     $
