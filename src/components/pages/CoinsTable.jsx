@@ -53,9 +53,9 @@ const CoinsTable = () => {
       <SectionHeading
         variant='h5'
         component='h2'
-        sx={{ marginBottom: '5px', paddingTop: '15px' }}
+        sx={{ marginBottom: '5px', paddingTop: '30px' }}
       >
-        Today's Cryptocurrency Prices by Market Cap
+        Cryptocurrency Prices by Market Cap
       </SectionHeading>
       <TableContainer>
         <Table>

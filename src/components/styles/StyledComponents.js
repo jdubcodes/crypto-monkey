@@ -238,7 +238,7 @@ export const FiCardContent = styled(CardContent)({
 
 export const ArticleTitle = styled(Typography)({
   paddingLeft: '5px',
-  color: priColor,
+  color: '#ffcba8',
   fontSize: '15px',
   fontWeight: '300',
   lineHeight: '1.4',

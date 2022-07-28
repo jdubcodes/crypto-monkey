@@ -48,8 +48,12 @@ const NewsArticles = () => {
 
   return (
     <ArticlesContainer>
-      <SectionHeading variant='h5' component='h2' sx={{ paddingTop: '10px' }}>
-        Daily News
+      <SectionHeading
+        variant='h5'
+        component='h2'
+        sx={{ marginBottom: '5px', paddingTop: '10px' }}
+      >
+        Daily Cryptocurrency News
       </SectionHeading>
       <Swiper
         modules={[A11y]}
@@ -68,8 +72,6 @@ const NewsArticles = () => {
             slidesPerView: 4,
           },
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
       >
         {articles.map((article, index) => {
           return (

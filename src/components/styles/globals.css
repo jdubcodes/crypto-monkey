@@ -5,14 +5,19 @@
 }
 
 html {
-  background: linear-gradient(
-    rgb(254, 241, 234) 0%,
-    rgba(248, 250, 253, 0) 413px
-  );
+  background-color: #fff;
   scroll-behavior: smooth;
   scrollbar-width: thin;
   scrollbar-color: #f5bb96 transparent;
   overflow: auto;
+}
+
+body {
+  height: 100%;
+  background: linear-gradient(
+    rgb(254, 241, 234) 0%,
+    rgba(248, 250, 253, 0) 413px
+  );
 }
 
 a {
@@ -21,7 +26,7 @@ a {
 /* scrollbar styles */
 ::-webkit-scrollbar {
   background: transparent;
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {

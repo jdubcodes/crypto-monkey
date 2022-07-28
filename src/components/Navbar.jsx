@@ -4,7 +4,7 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 // MUI Icons
-import CurrencyExchange from '@mui/icons-material/CurrencyExchange'
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined'
 // Custom styled components
 import {
   LogoBox,
@@ -29,11 +29,11 @@ const Navbar = () => {
             </Link>
           </LogoBox>
           {/* Button for wallet connect on small screens */}
-          <CurrencyExchange
+          <AccountBalanceWalletOutlinedIcon
             sx={{
               marginLeft: 'auto',
               display: { sm: 'none' },
-              color: '#393536',
+              color: '#421101',
             }}
           />
           {/* Placeholder for wallet connect button on large screens */}
