@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 // Created componenets
-import TableChart from '../TableChart'
+import TableChart from './TableChart'
 // MUI Compoenents
 import Container from '@mui/material/Container'
 import TableContainer from '@mui/material/TableContainer'
@@ -22,7 +22,7 @@ import {
   CoinNameBox,
   ProfitText,
   SectionHeading,
-} from '../styles/StyledComponents'
+} from './styles/StyledComponents'
 
 const CoinsTable = () => {
   const [coins, setCoins] = useState([])
@@ -31,7 +31,6 @@ const CoinsTable = () => {
   const fetchCoins = async () => {
     const { data } = await axios(`${process.env.REACT_APP_ALL_COINS_URL}`)
 
-    // console.log(data)
     setCoins(data)
   }
 

@@ -1,5 +1,4 @@
-// Currently not being used in version 1.0
-
+// ******* Currently not being used in version 1.0 *******
 import ArticleOutlined from '@mui/icons-material/ArticleOutlined'
 import CurrencyBitcoin from '@mui/icons-material/CurrencyBitcoin'
 import SwapHorizOutlined from '@mui/icons-material/SwapHorizOutlined'

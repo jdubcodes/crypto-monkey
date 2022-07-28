@@ -1,4 +1,4 @@
-import CoinsTable from './CoinsTable'
+import CoinsTable from '../CoinsTable'
 import NewsArticles from '../NewsArticles'
 
 const Homepage = () => {

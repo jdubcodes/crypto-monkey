@@ -39,7 +39,6 @@ const NewsArticles = () => {
 
     const { data } = await axios.request(options)
 
-    console.log(data.value)
     setArticles(data.value)
   }
   useEffect(() => {
