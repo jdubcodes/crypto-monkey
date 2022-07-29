@@ -54,7 +54,7 @@ const MarqueeScroll = () => {
         let increase = coin.price_change_percentage_24h > 0
 
         return (
-          <Link to={coin.id}>
+          <Link to={`/coins/${coin.id}`}>
             <MarqueeContainer key={coin.symbol}>
               <MarqueeLogo component='img' src={coin.image} alt={coin.symbol} />
               <Typography noWrap variant='body' sx={{ mr: 1 }}>

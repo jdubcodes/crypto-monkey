@@ -33,6 +33,7 @@ const CoinsTable = () => {
     const { data } = await axios(`${process.env.REACT_APP_ALL_COINS_URL}`)
 
     setCoins(data)
+    console.log(data)
   }
 
   useEffect(() => {
@@ -129,7 +130,7 @@ const CoinsTable = () => {
                     {coin.market_cap_rank}
                   </TableCell>
                   <TableCell>
-                    <Link to={coin.id}>
+                    <Link to={`/coins/${coin.id}`}>
                       <CoinNameBox>
                         <CoinLogo
                           component='img'
