@@ -243,3 +243,46 @@ export const ArticleTitle = styled(Typography)({
   fontWeight: '300',
   lineHeight: '1.4',
 })
+
+// CoinInfo page styles
+export const CoinInfoContainer = styled(Container)({
+  minHeight: '100vh',
+  paddingTop: '0.5rem',
+  display: 'flex',
+  justifyContent: 'space-between',
+  backgroundColor: 'transparent',
+})
+
+export const TopSummaryBox = styled(Box)({
+  display: 'flex',
+})
+
+export const NameSection = styled(Box)({
+  display: 'flex',
+  gap: '10px',
+  alignItems: 'center',
+  flex: '0 0 50%',
+})
+
+export const CoinNameWrapper = styled(Box)({
+  display: 'flex',
+  gap: '8px',
+  alignItems: 'center',
+})
+
+export const CoinNameText = styled(Typography)({
+  fontSize: '32px',
+  fontWeight: '600',
+})
+
+export const CoinSymbol = styled(Typography)({
+  padding: '2px 5px',
+  fontSize: '14px',
+  fontWeight: '500',
+  backgroundColor: '#ffddc7',
+  borderRadius: '4px',
+})
+
+export const PriceSection = styled(Box)({
+  flex: '0 0 50%',
+})
