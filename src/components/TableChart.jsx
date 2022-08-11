@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+// Chart imports
 import { Line } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
@@ -35,7 +36,7 @@ const TableChart = ({ id }) => {
       checkProfit()
     }
     fetchPriceData()
-  }, [])
+  }, [id])
 
   return (
     <Box sx={{ width: 160, height: 60 }}>
