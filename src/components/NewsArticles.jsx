@@ -40,6 +40,8 @@ const NewsArticles = () => {
     const { data } = await axios.request(options)
 
     setArticles(data.value)
+    console.log('News article data:')
+    console.log(articles)
   }
   useEffect(() => {
     newsEndPoint()
@@ -52,7 +54,7 @@ const NewsArticles = () => {
         component='h2'
         sx={{ marginBottom: '5px', paddingTop: '10px' }}
       >
-        Daily Cryptocurrency News
+        Today's Cryptocurrency News
       </SectionHeading>
       <Swiper
         modules={[A11y]}
@@ -74,12 +76,8 @@ const NewsArticles = () => {
       >
         {articles.map((article, index) => {
           return (
-            <SwiperSlide>
-              <NewsCard
-                key={index}
-                article={article.name}
-                articleUrl={article.url}
-              />
+            <SwiperSlide key={index}>
+              <NewsCard article={article.name} articleUrl={article.url} />
             </SwiperSlide>
           )
         })}
