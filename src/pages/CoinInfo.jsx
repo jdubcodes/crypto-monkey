@@ -26,18 +26,19 @@ const CoinInfo = () => {
   const { id } = useParams()
   const [coin, setCoin] = useState([])
 
+  const singleCoinUrl = (id) =>
+    `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=true&community_data=false&developer_data=false`
+
+  const fetchCoinInfo = async () => {
+    const { data } = await axios(singleCoinUrl(id))
+
+    setCoin(data)
+    console.log(data)
+  }
+
   useEffect(() => {
-    const fetchCoinInfo = async () => {
-      const singleCoinUrl = (id) =>
-        `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=true&community_data=false&developer_data=false`
-
-      const { data } = await axios(singleCoinUrl(id))
-
-      setCoin(data)
-      console.log(data)
-    }
     fetchCoinInfo()
-  }, [id])
+  }, [])
   return (
     <CoinInfoContainer
       className='main-page-container'

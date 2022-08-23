@@ -1,5 +1,5 @@
-import CoinsTable from '../CoinsTable'
-import NewsArticles from '../NewsArticles'
+import CoinsTable from '../components/CoinsTable'
+import NewsArticles from '../components/NewsArticles'
 
 const Homepage = () => {
   return (

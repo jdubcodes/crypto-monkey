@@ -23,7 +23,7 @@ import {
   CoinNameBox,
   ProfitText,
   SectionHeading,
-} from './styles/StyledComponents'
+} from '../styles/StyledComponents'
 
 const CoinsTable = () => {
   const [coins, setCoins] = useState([])

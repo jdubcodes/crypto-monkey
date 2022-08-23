@@ -13,7 +13,7 @@ import {
   MarqueeContainer,
   MarqueeLogo,
   ProfitText,
-} from '../components/styles/StyledComponents'
+} from '../styles/StyledComponents'
 
 import marqueeBg from '../images/marqueeBg.svg'
 

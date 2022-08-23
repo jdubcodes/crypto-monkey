@@ -6,7 +6,7 @@ import {
   NewsHeadlineBox,
   FiCardContent,
   ArticleTitle,
-} from './styles/StyledComponents'
+} from '../styles/StyledComponents'
 // Config Files
 import newsImgs from '../config/newsImgs'
 
@@ -14,7 +14,7 @@ const NewsCard = ({ index, article, articleUrl }) => {
   const findRandomImg = () => {
     const randomNum = Math.floor(Math.random() * newsImgs.length)
     const randomImg = newsImgs[randomNum]
-    newsImgs.splice(randomNum, 1)
+    console.log(randomNum)
     return randomImg
   }
 

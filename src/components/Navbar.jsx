@@ -11,7 +11,7 @@ import {
   Logo,
   LogoText,
   DesktopWalletButton,
-} from './styles/StyledComponents'
+} from '../styles/StyledComponents'
 // Images
 import logo from '../images/logo.png'
 import logoText from '../images/logoText.png'

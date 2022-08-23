@@ -3,12 +3,12 @@ import { Route, Routes } from 'react-router-dom'
 import { Scrollbar } from 'smooth-scrollbar-react'
 // Custom styling imports
 import { ThemeProvider } from '@mui/material'
-import customTheme from './components/styles/customTheme'
+import customTheme from './styles/customTheme'
 // Components
 import Navbar from './components/Navbar'
 import MarqueeScroll from './components/MarqueeScroll'
-import Homepage from './components/pages/Homepage'
-import CoinInfo from './components/pages/CoinInfo'
+import Homepage from './pages/Homepage'
+import CoinInfo from './pages/CoinInfo'
 
 function App() {
   return (
@@ -18,7 +18,7 @@ function App() {
         <MarqueeScroll />
         <Routes>
           <Route path='/' element={<Homepage />} />
-          <Route path='/:id' element={<CoinInfo />} />
+          <Route path='/coins/:id' element={<CoinInfo />} />
         </Routes>
       </Scrollbar>
     </ThemeProvider>

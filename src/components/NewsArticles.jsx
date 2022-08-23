@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 // Custom Components
 import NewsCard from './NewsCard'
 // Custom Styled Componenets
-import { ArticlesContainer, SectionHeading } from './styles/StyledComponents'
+import { ArticlesContainer, SectionHeading } from '../styles/StyledComponents'
 // Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 // import Swiper core and required modules
