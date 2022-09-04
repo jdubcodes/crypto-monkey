@@ -17,35 +17,36 @@ import 'swiper/css/scrollbar'
 const NewsArticles = () => {
   const [articles, setArticles] = useState([])
 
-  const newsEndPoint = async () => {
-    const options = {
-      method: 'GET',
-      url: 'https://bing-news-search1.p.rapidapi.com/news/search',
-      params: {
-        q: 'Crypto',
-        count: '10',
-        setLang: 'EN',
-        mkt: 'en-US',
-        freshness: 'Day',
-        textFormat: 'Raw',
-        safeSearch: 'Off',
-      },
-      headers: {
-        'X-BingApis-SDK': 'true',
-        'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
-        'X-RapidAPI-Key': `${process.env.REACT_APP_NEWS_API_KEY}`,
-      },
+  useEffect(() => {
+    const newsEndPoint = async () => {
+      const options = {
+        method: 'GET',
+        url: 'https://bing-news-search1.p.rapidapi.com/news/search',
+        params: {
+          q: 'Crypto',
+          count: '10',
+          setLang: 'EN',
+          mkt: 'en-US',
+          freshness: 'Day',
+          textFormat: 'Raw',
+          safeSearch: 'Off',
+        },
+        headers: {
+          'X-BingApis-SDK': 'true',
+          'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com',
+          'X-RapidAPI-Key': `${process.env.REACT_APP_NEWS_API_KEY}`,
+        },
+      }
+
+      const { data } = await axios.request(options)
+
+      setArticles(data.value)
+      console.log('News article data:')
+      console.log(articles)
     }
 
-    const { data } = await axios.request(options)
-
-    setArticles(data.value)
-    console.log('News article data:')
-    console.log(articles)
-  }
-  useEffect(() => {
     newsEndPoint()
-  }, [])
+  }, [articles])
 
   return (
     <ArticlesContainer>
