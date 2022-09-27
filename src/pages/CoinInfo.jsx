@@ -6,7 +6,9 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 // MUI Components
+import CircularProgress from '@mui/material/CircularProgress'
 import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 // Custom Styled Components
 import {
   CoinInfoContainer,
@@ -18,7 +20,10 @@ import {
   CoinRank,
   CoinIcon,
   PriceSection,
-  CoinPrice,
+  PriceHeading,
+  PriceTitle,
+  PriceValue,
+  PriceMovement,
 } from '../styles/StyledComponents'
 
 const CoinInfo = () => {
@@ -28,22 +33,29 @@ const CoinInfo = () => {
   const singleCoinUrl = (id) =>
     `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=true&community_data=false&developer_data=false`
 
-  const numberWithCommas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  }
-
-  const fetchCoinInfo = async () => {
-    const { data } = await axios.get(singleCoinUrl(id))
-
-    setCoin(data)
-    console.log(data)
-  }
-
   useEffect(() => {
+    const fetchCoinInfo = async () => {
+      const { data } = await axios.get(singleCoinUrl(id))
+
+      setCoin(data)
+      console.log(data)
+    }
+
     fetchCoinInfo()
   }, [id])
 
   const increase = coin?.market_data.price_change_percentage_24h > 0
+
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
+  if (!coin)
+    return (
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
+    )
 
   return (
     <CoinInfoContainer>
@@ -70,45 +82,33 @@ const CoinInfo = () => {
           <CoinRank>Rank #{coin?.coingecko_rank}</CoinRank>
         </NameSection>
         <PriceSection>
-          <Typography
-            component='h2'
-            sx={{ fontSize: '12px', fontWeight: '600' }}
-          >
-            {coin?.name} Price
-            <span
-              style={{
-                color: 'rgb(145 148 153)',
-                fontWeight: '500',
-                paddingLeft: '3px',
+          <PriceHeading component='h2'>
+            {coin?.name} Price ({coin?.symbol.toUpperCase()})
+          </PriceHeading>
+          <PriceTitle>
+            <PriceValue>
+              $
+              {numberWithCommas(coin?.market_data.current_price.usd.toFixed(2))}
+            </PriceValue>
+            <PriceMovement
+              variant='span'
+              sx={{
+                backgroundColor: increase
+                  ? 'rgb(22, 199, 132)'
+                  : 'rgb(234, 57, 67)',
               }}
             >
-              ({coin?.symbol.toUpperCase()})
-            </span>
-          </Typography>
-          <CoinPrice component='span'>
-            ${numberWithCommas(coin?.market_data.current_price.usd.toFixed(2))}
-          </CoinPrice>
-          <span
-            style={{
-              padding: '5px 10px',
-              backgroundColor: increase
-                ? 'rgb(22, 199, 132)'
-                : 'rgb(234, 57, 67)',
-              borderRadius: '8px',
-              color: '#rgb(255, 255, 255)',
-              fontFamily: 'Poppins',
-              fontWeight: '400',
-              fontSize: '14px',
-            }}
-          >
-            {increase ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
-            {increase
-              ? coin?.market_data.price_change_percentage_24h.toFixed(2)
-              : coin?.market_data.price_change_percentage_24h
-                  .toFixed(2)
-                  .slice(1)}
-            %
-          </span>
+              {increase ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+              <Box sx={{ marginLeft: '-3px' }}>
+                {increase
+                  ? coin?.market_data.price_change_percentage_24h.toFixed(2)
+                  : coin?.market_data.price_change_percentage_24h
+                      .toFixed(2)
+                      .slice(1)}
+                %
+              </Box>
+            </PriceMovement>
+          </PriceTitle>
         </PriceSection>
       </TopSummaryBox>
     </CoinInfoContainer>

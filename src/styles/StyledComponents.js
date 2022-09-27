@@ -300,9 +300,31 @@ export const CoinRank = styled(Typography)({
 
 export const PriceSection = styled(Box)({})
 
-export const CoinPrice = styled(Box)({
+export const PriceHeading = styled(Typography)({
+  fontSize: 12,
+  fontWeight: '600',
+  color: 'rgb(92 95 100)',
+})
+
+export const PriceTitle = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+})
+
+export const PriceValue = styled(Box)({
   paddingRight: '10px',
   fontSize: '32px',
   fontWeight: '600',
   fontFamily: 'Poppins',
+})
+
+export const PriceMovement = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  padding: '5px 10px 5px 3px',
+  borderRadius: '8px',
+  color: 'rgb(255,246,241)',
+  fontFamily: 'Poppins',
+  fontWeight: '500',
+  fontSize: '14px',
 })
