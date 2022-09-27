@@ -270,6 +270,12 @@ export const CoinNameWrapper = styled(Box)({
   alignItems: 'center',
 })
 
+export const CoinIcon = styled(Box)({
+  height: 32,
+  width: 32,
+  borderRadius: '50%',
+})
+
 export const CoinName = styled(Typography)({
   fontSize: '32px',
   fontWeight: '600',
@@ -292,10 +298,11 @@ export const CoinRank = styled(Typography)({
   color: 'white',
 })
 
-export const LinksSection = styled(Box)({
-  display: 'flex',
-})
+export const PriceSection = styled(Box)({})
 
-export const PriceSection = styled(Box)({
-  flex: '0 0 50%',
+export const CoinPrice = styled(Box)({
+  paddingRight: '10px',
+  fontSize: '32px',
+  fontWeight: '600',
+  fontFamily: 'Poppins',
 })
