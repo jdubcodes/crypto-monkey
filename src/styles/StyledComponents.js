@@ -254,6 +254,7 @@ export const CoinInfoContainer = styled(Container)({
 })
 
 export const TopSummaryBox = styled(Box)({
+  padding: '5px 0 24px',
   display: 'flex',
 })
 
@@ -328,3 +329,47 @@ export const PriceMovement = styled(Box)({
   fontWeight: '500',
   fontSize: '14px',
 })
+
+export const StatsSection = styled(Box)({})
+
+export const StatsContainer = styled(Box)({
+  padding: '24px 0',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(12, 1fr)',
+  borderTop: '1px solid rgb(223, 215, 215)',
+  borderBottom: '1px solid rgb(223, 215, 215)',
+})
+
+export const StatsBlock = styled(Box)({
+  display: 'flex',
+  flexDirection: 'column',
+  gridColumn: 'span 3 / auto',
+  minWidth: '200px',
+})
+
+export const StatsBlockInner = styled(Box)({})
+
+export const StatsInnerLabel = styled(Typography)({
+  paddingBottom: '3px',
+  fontSize: '13px',
+  fontWeight: '500',
+  color: '#726b69',
+})
+
+export const StatsInnerValue = styled(Typography)({
+  fontSize: '13px',
+  fontWeight: '600',
+  color: '#393536',
+})
+
+export const StatsPriceChange = styled(Typography)({
+  marginLeft: '-5px',
+  display: 'flex',
+  alignItems: 'center',
+  fontSize: '13px',
+  fontWeight: '600',
+})
+
+export const ChartSection = styled(Box)({})
+
+export const ChartWrapper = styled(Box)({})
