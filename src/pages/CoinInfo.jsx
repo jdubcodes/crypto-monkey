@@ -8,6 +8,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
 // MUI Components
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 // Custom Styled Components
 import {
   CoinInfoContainer,
@@ -32,11 +33,21 @@ import {
   StatsPriceChange,
   ChartSection,
   ChartWrapper,
+  SectionHeading,
+  ChartButtonWrapper,
+  ChartButtonList,
+  ChartHeadingWrapper,
+  ChartButton,
 } from '../styles/StyledComponents'
+// Custom components
+import MainChart from '../components/MainChart'
+// Config files
+import chartDays from '../config/chartDays'
 
 const CoinInfo = () => {
   const { id } = useParams()
   const [coin, setCoin] = useState()
+  const [days, setDays] = useState(1)
 
   const singleCoinUrl = (id) =>
     `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=true&community_data=false&developer_data=false`
@@ -46,7 +57,6 @@ const CoinInfo = () => {
       const { data } = await axios.get(singleCoinUrl(id))
 
       setCoin(data)
-      console.log(data)
     }
 
     fetchCoinInfo()
@@ -233,7 +243,7 @@ const CoinInfo = () => {
                 <StatsInnerValue>
                   {!coin?.market_data.max_supply
                     ? '--'
-                    : numberWithCommas(coin?.market_data.max_supply)}
+                    : formatNum(coin?.market_data.max_supply)}
                 </StatsInnerValue>
               </Box>
               <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -247,7 +257,36 @@ const CoinInfo = () => {
         </StatsContainer>
       </StatsSection>
       <ChartSection>
-        <ChartWrapper></ChartWrapper>
+        <ChartHeadingWrapper>
+          <SectionHeading>{coin?.name} to USD Chart</SectionHeading>
+          <ChartButtonWrapper>
+            <ChartButtonList>
+              {chartDays.map((day) => (
+                <ChartButton
+                  key={day.value}
+                  onClick={() => {
+                    setDays(day.value)
+                  }}
+                  component='li'
+                  sx={{
+                    backgroundColor: day.value === days ? '#fffefd' : '',
+                    boxShadow:
+                      day.value === days
+                        ? 'rgba(0, 0, 0, 0.04) 0px 3px 5px'
+                        : '',
+                  }}
+                >
+                  <Typography variant='body2' sx={{ fontSize: '15px' }}>
+                    {day.label}
+                  </Typography>
+                </ChartButton>
+              ))}
+            </ChartButtonList>
+          </ChartButtonWrapper>
+        </ChartHeadingWrapper>
+        <ChartWrapper>
+          <MainChart id={id} days={days} />
+        </ChartWrapper>
       </ChartSection>
     </CoinInfoContainer>
   )

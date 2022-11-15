@@ -1,3 +1,4 @@
+// MUI components
 import { styled } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import List from '@mui/material/List'
@@ -11,15 +12,10 @@ import CardActionArea from '@mui/material/CardActionArea'
 import CardMedia from '@mui/material/CardMedia'
 import CardContent from '@mui/material/CardContent'
 
-// Colors ( pri = primary, sec = secondary)
+// Colors
 const priColor = '#F5BB96'
-// const secColor = '#A46849'
 const altColor = '#393536'
 const drkColor = '#421101'
-// const priBgColor = '#202020'
-// const secBgColor = '#FEF1EA'
-// const priTextColor = '#FEF1EA'
-// const secTextColor = '#202020'
 
 // Global components
 export const ProfitText = styled(Typography)({
@@ -370,6 +366,42 @@ export const StatsPriceChange = styled(Typography)({
   fontWeight: '600',
 })
 
-export const ChartSection = styled(Box)({})
+export const ChartSection = styled(Box)({
+  paddingTop: '24px',
+})
 
-export const ChartWrapper = styled(Box)({})
+export const ChartHeadingWrapper = styled(Box)({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+})
+
+export const ChartButtonWrapper = styled(Box)({
+  height: '32px',
+  padding: '2px 8px',
+  display: 'flex',
+  backgroundColor: 'rgb(254, 241, 234)',
+  borderRadius: '8px',
+})
+
+export const ChartButtonList = styled(List)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '2px',
+})
+
+export const ChartButton = styled(Box)({
+  padding: '2px 5px',
+  borderRadius: '5px',
+  cursor: 'pointer',
+  '&:hover': {
+    backgroundColor: 'rgb(255,221,199)',
+    boxShadow: 'rgba(0, 0, 0, 0.04) 0px 3px 5px',
+  },
+})
+
+export const ChartWrapper = styled(Box)({
+  position: 'relative',
+  width: '100%',
+  height: '50vh',
+})
