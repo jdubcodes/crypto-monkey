@@ -249,10 +249,19 @@ export const CoinInfoContainer = styled(Container)({
   backgroundColor: 'transparent',
 })
 
-export const TopSummaryBox = styled(Box)({
-  padding: '5px 0 24px',
+export const TopSummaryBox = styled(Box)(({ theme }) => ({
   display: 'flex',
-})
+  [theme.breakpoints.up('xs')]: {
+    padding: '5px 0 15px',
+    flexDirection: 'column',
+    gap: '15px',
+  },
+  [theme.breakpoints.up('sm')]: {
+    padding: '5px 0 24px',
+    flexDirection: 'row',
+    gap: 0,
+  },
+}))
 
 export const NameSection = styled(Box)({
   display: 'flex',
@@ -273,10 +282,16 @@ export const CoinIcon = styled(Box)({
   borderRadius: '50%',
 })
 
-export const CoinName = styled(Typography)({
+export const CoinName = styled(Typography)(({ theme }) => ({
   fontSize: '32px',
   fontWeight: '600',
-})
+  [theme.breakpoints.up('xs')]: {
+    display: 'block',
+  },
+  [theme.breakpoints.up('sm')]: {
+    display: 'block',
+  },
+}))
 
 export const CoinSymbol = styled(Typography)({
   padding: '2px 5px',
@@ -286,14 +301,17 @@ export const CoinSymbol = styled(Typography)({
   borderRadius: '4px',
 })
 
-export const CoinRank = styled(Typography)({
+export const CoinRank = styled(Typography)(({ theme }) => ({
   padding: '2px 6px',
   backgroundColor: 'rgb(145 148 153)',
   borderRadius: '4px',
   fontSize: '11px',
   fontWeight: '500',
   color: 'white',
-})
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
+  },
+}))
 
 export const PriceSection = styled(Box)({})
 
@@ -303,10 +321,13 @@ export const PriceHeading = styled(Typography)({
   color: 'rgb(92 95 100)',
 })
 
-export const PriceTitle = styled(Box)({
+export const PriceTitle = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-})
+  [theme.breakpoints.down('sm')]: {
+    justifyContent: 'space-between',
+  },
+}))
 
 export const PriceValue = styled(Box)({
   paddingRight: '10px',
@@ -328,35 +349,65 @@ export const PriceMovement = styled(Box)({
 
 export const StatsSection = styled(Box)({})
 
-export const StatsContainer = styled(Box)({
+export const StatsContainer = styled(Box)(({ theme }) => ({
   padding: '24px 0',
   display: 'grid',
   gridTemplateColumns: 'repeat(12, 1fr)',
   borderTop: '1px solid rgb(223, 215, 215)',
   borderBottom: '1px solid rgb(223, 215, 215)',
-})
+  [theme.breakpoints.down('md')]: {
+    padding: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    borderBottom: 'none',
+  },
+}))
 
-export const StatsBlock = styled(Box)({
+export const StatsBlock = styled(Box)(({ theme }) => ({
+  marginRight: '28px',
   display: 'flex',
   flexDirection: 'column',
   gridColumn: 'span 3 / auto',
   minWidth: '200px',
-})
+  borderRight: '1px solid rgb(223, 215, 215)',
+  [theme.breakpoints.down('md')]: {
+    margin: '0',
+    padding: '15px 0',
+    borderRight: 'none',
+    borderBottom: '1px solid rgb(223, 215, 215)',
+  },
+}))
 
-export const StatsBlockInner = styled(Box)({})
+export const StatsBlockInner = styled(Box)(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    marginTop: 0,
+    display: 'flex',
+    gap: '15px',
+    alignItems: 'center',
+  },
+}))
 
-export const StatsInnerLabel = styled(Typography)({
+export const StatsInnerLabel = styled(Typography)(({ theme }) => ({
   paddingBottom: '3px',
   fontSize: '13px',
   fontWeight: '500',
   color: '#726b69',
-})
+  [theme.breakpoints.down('md')]: {
+    marginRight: 'auto',
+  },
+}))
 
-export const StatsInnerValue = styled(Typography)({
+export const StatsInnerValue = styled(Typography)(({ theme }) => ({
   fontSize: '13px',
   fontWeight: '600',
   color: '#393536',
-})
+  [theme.breakpoints.down('md')]: {
+    fontSize: '16px',
+    fontWeight: '500',
+    order: '2',
+  },
+}))
 
 export const StatsPriceChange = styled(Typography)({
   marginLeft: '-5px',
@@ -366,29 +417,51 @@ export const StatsPriceChange = styled(Typography)({
   fontWeight: '600',
 })
 
+export const StatsInnerBox = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  [theme.breakpoints.down('md')]: {
+    display: 'none',
+  },
+}))
+
 export const ChartSection = styled(Box)({
   paddingTop: '24px',
 })
 
-export const ChartHeadingWrapper = styled(Box)({
+export const ChartHeadingWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-})
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: '5px',
+  },
+}))
 
-export const ChartButtonWrapper = styled(Box)({
+export const ChartButtonWrapper = styled(Box)(({ theme }) => ({
   height: '32px',
   padding: '2px 8px',
   display: 'flex',
   backgroundColor: 'rgb(254, 241, 234)',
   borderRadius: '8px',
-})
+  [theme.breakpoints.down('sm')]: {
+    alignSelf: 'center',
+    marginBottom: '10px',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+}))
 
-export const ChartButtonList = styled(List)({
+export const ChartButtonList = styled(List)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   gap: '2px',
-})
+  [theme.breakpoints.down('sm')]: {
+    gap: '10px',
+  },
+}))
 
 export const ChartButton = styled(Box)({
   padding: '2px 5px',
@@ -400,8 +473,12 @@ export const ChartButton = styled(Box)({
   },
 })
 
-export const ChartWrapper = styled(Box)({
-  position: 'relative',
-  width: '100%',
-  height: '50vh',
-})
+export const ChartWrapper = styled(Box)(({ theme }) => ({
+  height: '398px',
+  [theme.breakpoints.up('sm')]: {
+    height: '498px',
+  },
+  [theme.breakpoints.up(1920)]: {
+    height: '598px',
+  },
+}))

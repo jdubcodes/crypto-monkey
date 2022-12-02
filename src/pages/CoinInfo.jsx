@@ -30,6 +30,7 @@ import {
   StatsBlockInner,
   StatsInnerLabel,
   StatsInnerValue,
+  StatsInnerBox,
   StatsPriceChange,
   ChartSection,
   ChartWrapper,
@@ -141,12 +142,7 @@ const CoinInfo = () => {
       </TopSummaryBox>
       <StatsSection>
         <StatsContainer>
-          <StatsBlock
-            sx={{
-              borderRight: '1px solid rgb(223, 215, 215)',
-              marginRight: '28px',
-            }}
-          >
+          <StatsBlock>
             <StatsBlockInner>
               <StatsInnerLabel>Market Cap</StatsInnerLabel>
               <StatsInnerValue>
@@ -172,12 +168,7 @@ const CoinInfo = () => {
               </StatsPriceChange>
             </StatsBlockInner>
           </StatsBlock>
-          <StatsBlock
-            sx={{
-              borderRight: '1px solid rgb(223, 215, 215)',
-              marginRight: '28px',
-            }}
-          >
+          <StatsBlock>
             <StatsBlockInner>
               <StatsInnerLabel>Market Cap Change (24h)</StatsInnerLabel>
               <StatsInnerValue>
@@ -206,12 +197,7 @@ const CoinInfo = () => {
               </StatsPriceChange>
             </StatsBlockInner>
           </StatsBlock>
-          <StatsBlock
-            sx={{
-              borderRight: '1px solid rgb(223, 215, 215)',
-              marginRight: '28px',
-            }}
-          >
+          <StatsBlock>
             <StatsBlockInner>
               <StatsInnerLabel>Total Volume</StatsInnerLabel>
               <StatsInnerValue>
@@ -228,30 +214,36 @@ const CoinInfo = () => {
               </StatsInnerValue>
             </StatsBlockInner>
           </StatsBlock>
-          <StatsBlock sx={{ paddingRight: '24px' }}>
+          <StatsBlock
+            sx={{
+              paddingRight: '24px',
+              marginRight: 'none',
+              borderRight: 'none',
+            }}
+          >
             <StatsBlockInner>
-              <StatsInnerLabel>Circulating Supply</StatsInnerLabel>
+              <StatsInnerLabel>
+                Circulating Supply ({coin?.symbol.toUpperCase()})
+              </StatsInnerLabel>
               <StatsInnerValue>
-                {formatNum(coin?.market_data.circulating_supply) +
-                  ' ' +
-                  coin?.symbol.toUpperCase()}
+                {formatNum(coin?.market_data.circulating_supply)}
               </StatsInnerValue>
             </StatsBlockInner>
             <StatsBlockInner sx={{ marginTop: '28px' }}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              <StatsInnerBox>
                 <StatsInnerLabel>Max Supply</StatsInnerLabel>
                 <StatsInnerValue>
                   {!coin?.market_data.max_supply
                     ? '--'
                     : formatNum(coin?.market_data.max_supply)}
                 </StatsInnerValue>
-              </Box>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+              </StatsInnerBox>
+              <StatsInnerBox>
                 <StatsInnerLabel>Total Supply</StatsInnerLabel>
                 <StatsInnerValue>
                   {formatNum(coin?.market_data.total_supply)}
                 </StatsInnerValue>
-              </Box>
+              </StatsInnerBox>
             </StatsBlockInner>
           </StatsBlock>
         </StatsContainer>
