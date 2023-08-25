@@ -38,6 +38,20 @@ const MarqueeScroll = () => {
     fetchTrendingCoins()
   }, [])
 
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
+  // const formatNum = (x) => {
+  //   let val = Math.round(Number(x) * 100) / 100
+  //   let parts = val.toString().split('.')
+  //   let num =
+  //     parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',') +
+  //     (parts[1] ? '.' + parts[1] : '')
+
+  //   return num
+  // }
+
   return (
     <Marquee
       pauseOnHover='true'
@@ -61,7 +75,7 @@ const MarqueeScroll = () => {
                 {coin.name}
               </Typography>
               <Typography variant='body' sx={{ mr: 1 }}>
-                ${coin.current_price.toFixed(2)}
+                ${numberWithCommas(coin.current_price.toFixed(2))}
               </Typography>
               <ProfitText
                 variant='body'
